@@ -9,7 +9,7 @@ public class Movement : MonoBehaviour
     [SerializeField]float VectorX ;
     [SerializeField]float VectorY = 0;
     [SerializeField]float VectorZ;
-    [SerializeField]float Speed = 20 ;
+    [SerializeField]float Speed = 10 ;
     [SerializeField] InputAction actionJump;
     Rigidbody rb;
     // Start is called before the first frame update
@@ -34,6 +34,10 @@ public class Movement : MonoBehaviour
         if (actionJump.IsPressed())
         {
             rb.AddForce(Vector3.up * 1000 * Time.fixedDeltaTime);
+        }
+        if (!actionJump.IsPressed())
+        {
+            rb.AddForce(Vector3.down * 1000 * Time.fixedDeltaTime);
         }
     }
 }
